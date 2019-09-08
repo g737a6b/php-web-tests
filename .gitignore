@@ -1,0 +1,5 @@
+/vendor
+/selenium-server-standalone-*.jar
+/chromedriver
+/demo/selenium-server-standalone-*.jar
+/demo/chromedriver

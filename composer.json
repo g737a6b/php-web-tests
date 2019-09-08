@@ -1,0 +1,27 @@
+{
+	"name": "g737a6b/php-web-tests",
+	"description": "PHP Web UI testing Framework.",
+	"keywords": ["webdriver", "ui-test", "test"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Hiroyuki Suzuki",
+			"homepage": "https://mofg.net"
+		}
+	],
+	"support": {
+		"source": "https://github.com/g737a6b/php-web-tests",
+		"issues": "https://github.com/g737a6b/php-web-tests/issues"
+	},
+	"require": {
+		"facebook/webdriver": "^1.7"
+	},
+	"autoload": {
+		"psr-4": {
+			"Mofg\\": "src/"
+		}
+	},
+	"bin": [
+		"php-web-tests"
+	]
+}

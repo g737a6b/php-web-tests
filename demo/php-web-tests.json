@@ -1,0 +1,13 @@
+{
+	"tests_dir": "tests",
+	"groups": {
+		"all": "*",
+		"my_custom": [
+			"test_1",
+			"test_2"
+		]
+	},
+	"vars": {
+		"var1": "Apple"
+	}
+}

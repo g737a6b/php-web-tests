@@ -1,0 +1,42 @@
+#!/usr/bin/env php
+<?php
+/**
+ * PHPWebTests
+ *
+ * @author Hiroyuki Suzuki
+ * @copyright Copyright (c) 2019 Hiroyuki Suzuki mofg.net
+ * @license http://opensource.org/licenses/MIT The MIT License
+ */
+if( version_compare("7.1.0", PHP_VERSION, ">") ){
+	fwrite(STDERR, "PHP version ".PHP_VERSION." is not supported.".PHP_EOL);
+	exit(1);
+}
+
+$composerDirList = [__DIR__."/../..", __DIR__."/../vendor", __DIR__."/vendor"];
+foreach($composerDirList as $i){
+	if( !file_exists($i."/autoload.php") ) continue;
+	define("PWT_COMPOSER_PATH", $i);
+	break;
+}
+
+if( !defined("PWT_COMPOSER_PATH") ){
+	fwrite(STDERR, "Composer autoload file could not be found.".PHP_EOL);
+	exit(1);
+}
+
+require(PWT_COMPOSER_PATH."/autoload.php");
+
+$configFile = "php-web-tests.json";
+$configPath = "./".$configFile;
+
+if( file_exists($configPath) ){
+	$config = json_decode(file_get_contents($configPath), true);
+}else{
+	fwrite(STDERR, $configFile." file could not be found.".PHP_EOL);
+	exit(1);
+}
+
+$options = getopt("g:");
+
+Mofg\WebTests::setup($config, $options);
+Mofg\WebTests::runTests();
